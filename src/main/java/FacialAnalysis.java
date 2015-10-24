@@ -14,46 +14,54 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Sample
+public class FacialAnalysis
 {
     final static String AUTH_KEY = "xxx";
     final static HttpClient httpclient = HttpClients.createDefault();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        try {
+            String input =  "\"url\":\"http://orig15.deviantart.net/5470/f/2010/105/4/5/random_person_by_vurtov.jpg\"";
+            JSON result = faceDetection(input);
+            Map<String, String> heroes = new HashMap<String, String>();
+            // Wonder Woman
+            System.out.println("Wonder Woman");
+            heroes.put(faceDetection("\"url\":\"http://oyster.ignimgs.com/wordpress/stg.ign.com/2010/01/lynda-carter-wonder-woman.jpg\"").getFaceId(), "Wonder Woman");
+            // Joker
+            System.out.println("Joker");
+            heroes.put(faceDetection("\"url\":\"http://blogs-images.forbes.com/markhughes/files/2015/04/Heath-Ledger-Joker-The-Dark-Knight.png\"").getFaceId(), "Joker");
+            // Storm
+            System.out.println("Storm");
+            heroes.put(faceDetection("\"url\":\"http://cdn.movieweb.com/img.news/NE3IBkFlPbuF6b_1_2.jpg\"").getFaceId(), "Storm");
+            // Jean Grey/Phoenix
+            System.out.println("Jean Grey/Phoenix");
+            heroes.put(faceDetection("\"url\":\"http://vignette1.wikia.nocookie.net/xmenmovies/images/7/70/Phoenix_13.jpg/revision/latest?cb=20110626022356\"").getFaceId(), "Jean Grey/Phoenix");
+            // Iron Man
+            System.out.println("Iron Man");
+            heroes.put(faceDetection("\"url\":\"http://cdn.idigitaltimes.com/sites/idigitaltimes.com/files/2014/09/08/iron-man-4.jpg\"").getFaceId(), "Iron Man");
+            // Superman
+            System.out.println("Superman");
+            heroes.put(faceDetection("\"url\":\"http://www.coupdemainmagazine.com/sites/default/files/3/Henry%20Cavill.jpg\"").getFaceId(), "Superman");
+            // Mystique
+            System.out.println("Mystique");
+            heroes.put(faceDetection("\"url\":\"http://cdn.wegotthiscovered.com/wp-content/uploads/683013-540x360.jpg\"").getFaceId(), "Mystique");
+            // Xavier
+            System.out.println("Bing Bing Fan");
+            heroes.put(faceDetection("\"url\":\"http://screenrant.com/wp-content/uploads/Blink-in-X-Men-Days-of-Future-Past1.jpg\"").getFaceId(), "Bing Bing Fan");
 
-        String input =  "\"url\":\"http://www.richelehenry.com/wp-content/uploads/2012/12/istock_man-tired-man.jpg\"";
-        JSON result = faceDetection(input);
-        // ^ faceID = a3ee2200-094c-4bb5-abda-693a408ea814
-        Map<String, String> heroes = new HashMap<String, String>();
-        // Wonder Woman
-        System.out.println("Wonder Woman");
-        heroes.put("Wonder Woman", faceDetection("\"url\":\"http://oyster.ignimgs.com/wordpress/stg.ign.com/2010/01/lynda-carter-wonder-woman.jpg\"").getFaceId());
-        // Joker
-        System.out.println("Joker");
-        heroes.put("Joker", faceDetection("\"url\":\"http://blogs-images.forbes.com/markhughes/files/2015/04/Heath-Ledger-Joker-The-Dark-Knight.png\"").getFaceId());
-        // Storm
-        System.out.println("Storm");
-        heroes.put("Storm", faceDetection("\"url\":\"http://d1oi7t5trwfj5d.cloudfront.net/d9/3738f0754e11e2922e22000a1d0930/file/x-men-storm.jpg\"").getFaceId());
-        // Jean Grey/Phoenix
-        System.out.println("Jean Grey/Phoenix");
-        heroes.put("Jean Grey/Phoenix", faceDetection("\"url\":\"http://vignette1.wikia.nocookie.net/xmenmovies/images/7/70/Phoenix_13.jpg/revision/latest?cb=20110626022356\"").getFaceId());
-        // Superman
-        System.out.println("Superman");
-        heroes.put("Superman", faceDetection("\"url\":\"http://static.comicvine.com/uploads/original/0/40/3114457-man-of-steel.jpg\"").getFaceId());
-        // Mystique
-        System.out.println("Mystique");
-        heroes.put("Mystique", faceDetection("\"url\":\"http://cdn.wegotthiscovered.com/wp-content/uploads/683013-540x360.jpg\"").getFaceId());
-        // Xavier
-        System.out.println("Xavier");
-        heroes.put("Xavier", faceDetection("\"url\":\"http://studentsites.woodlandschools.org/2015/thomast8/Web%20Design%201/Projects/X-men/professor-x.jpg\"").getFaceId());
-
-        String[] toCompareWith = new String[heroes.size()];
-        int count = 0;
-        for (String names : heroes.keySet()) {
-            toCompareWith[count++] = heroes.get(names);
+            String[] toCompareWith = new String[heroes.size()];
+            int count = 0;
+            for (String ids : heroes.keySet()) {
+                toCompareWith[count++] = ids;
+            }
+            String similarHero = heroes.get(findSimilar(result, toCompareWith));
+            System.out.println(similarHero);
         }
-        String similarHero = findSimilar(result, toCompareWith);
-        System.out.println(similarHero);
+        catch (Exception e) {
+            System.out.println("Time leak");
+            Thread.sleep(50000);
+            main(null);
+        }
     }
 
     public static JSON faceDetection(String url) {
@@ -99,7 +107,8 @@ public class Sample
         String def = "hulk";
         for (int i = 0; i < toCompareWith.length-1; i++) {
             current = compare(user, toCompareWith[i]);
-            System.out.println("Look: " + current);
+            System.out.println("Current: " + current);
+            System.out.println("Max: " + max);
             if (current > max) {
                 max = current;
                 similar = toCompareWith[i];
