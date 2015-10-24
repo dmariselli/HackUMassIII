@@ -10,11 +10,10 @@
  	width: 90%;
  	background-color: #08088A;
  	text-align: center;
- 	color: #FFFFFF;
  	padding: 8px;
  	 }
 
- 	/* .bio_div{
+ 	.upload_div{
  	border: 2px solid gray;
  	margin-left: auto;
  	margin-right: auto;
@@ -24,9 +23,9 @@
  	padding: 8px;
  	  
 
- 	 }*/
- html,body{
- 	 	background-image: url(background.JPG);
+ 	 }
+ /*html,body{
+ 	 	background-image: url(background.JPG);*/
 
 
  }
