@@ -132,16 +132,16 @@ public class Sample
             HttpEntity entity = response.getEntity();
             Double real = 0.0;
             if (entity != null) {
-                System.out.println("Done!");
                 String result = EntityUtils.toString(entity);
-                real = Double.parseDouble(result);
-                System.out.println(EntityUtils.toString(entity));
+                String[] split = result.split(":");
+                String forrealz = split[2].substring(0, split[2].length()-1);
+                real = Double.parseDouble(forrealz);
             }
+            System.out.println("Double forming: " + real);
             return real;
         }
         catch (Exception e)
         {
-            System.out.println("Error");
             System.out.println(e.getMessage());
         }
         return 0.0;
