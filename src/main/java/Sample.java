@@ -11,9 +11,7 @@ import org.apache.http.util.EntityUtils;
 import com.google.gson.Gson;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Sample
@@ -124,9 +122,9 @@ public class Sample
 
             // Request body
             StringEntity reqEntity = new StringEntity("{\"faceId1\":\"" + user.getFaceId() + "\",\n" +
-                    "\"faceId2\":\"" + comparison + "}");
+                    "\"faceId2\":\"" + comparison + "\"}");
 
-            System.out.println("About to compare with: " + user.getFaceId() + " with " + comparison);
+            System.out.println("About to compare " + user.getFaceId() + " with " + comparison);
 
             request.setEntity(reqEntity);
 
