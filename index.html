@@ -8,6 +8,7 @@
 <!--Code to get an upload file-->
 <center>
 <body onload="myFunction()">
+<background class="background.jpg"></background>");
 
 <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
 
@@ -19,7 +20,7 @@ function myFunction(){
     var txt = "";
     if ('files' in x) {
         if (x.files.length == 0) {
-            txt = "Select one or more files.";
+            txt = "Select an image file to determine your superhero";
         } else {
             for (var i = 0; i < x.files.length; i++) {
                 txt += "<br><strong>" + (i+1) + ". file</strong><br>";
@@ -35,7 +36,7 @@ function myFunction(){
     } 
     else {
         if (x.value == "") {
-            txt += "Select your music file.";
+            txt += "Select your file.";
         } else {
             txt += "The files property is not supported by your browser!";
             txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
@@ -45,7 +46,6 @@ function myFunction(){
 }
 </script>
 
-<p><strong>Tip:</strong> Use the Control or the Shift key to select multiple files.</p>
 
 </body>
 
