@@ -4,26 +4,8 @@
  <style>
  .container{
  	text-align: center;}
- 	
- .center_div{
- 	border: 2px solid gray;
- 	margin-left: auto;
- 	margin-right: auto;
- 	width: 90%;
- 	background-color: #08088A;
- 	text-align: center;
- 	padding: 8px;}
+ 
 
- 	.upload_div{
- 	border: 2px solid gray;
- 	margin-left: auto;
- 	margin-right: auto;
- 	width: 90%;
- 	background-color: #F0F8FF;
- 	text-align: center;
- 	padding: 8px;}
- 
- 
  html,body{
  	 	background-image: url(background.JPG);}
 
