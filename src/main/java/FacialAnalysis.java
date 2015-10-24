@@ -21,33 +21,13 @@ public class FacialAnalysis
 
     public static void main(String[] args) throws InterruptedException {
         try {
+            Map<String, String> heroes = new HashMap<String, String>();
             String input =  "\"url\":\"http://orig15.deviantart.net/5470/f/2010/105/4/5/random_person_by_vurtov.jpg\"";
             JSON result = faceDetection(input);
-            Map<String, String> heroes = new HashMap<String, String>();
-            // Wonder Woman
-            System.out.println("Wonder Woman");
-            heroes.put(faceDetection("\"url\":\"http://oyster.ignimgs.com/wordpress/stg.ign.com/2010/01/lynda-carter-wonder-woman.jpg\"").getFaceId(), "Wonder Woman");
-            // Joker
-            System.out.println("Joker");
-            heroes.put(faceDetection("\"url\":\"http://blogs-images.forbes.com/markhughes/files/2015/04/Heath-Ledger-Joker-The-Dark-Knight.png\"").getFaceId(), "Joker");
-            // Storm
-            System.out.println("Storm");
-            heroes.put(faceDetection("\"url\":\"http://cdn.movieweb.com/img.news/NE3IBkFlPbuF6b_1_2.jpg\"").getFaceId(), "Storm");
-            // Jean Grey/Phoenix
-            System.out.println("Jean Grey/Phoenix");
-            heroes.put(faceDetection("\"url\":\"http://vignette1.wikia.nocookie.net/xmenmovies/images/7/70/Phoenix_13.jpg/revision/latest?cb=20110626022356\"").getFaceId(), "Jean Grey/Phoenix");
-            // Iron Man
-            System.out.println("Iron Man");
-            heroes.put(faceDetection("\"url\":\"http://cdn.idigitaltimes.com/sites/idigitaltimes.com/files/2014/09/08/iron-man-4.jpg\"").getFaceId(), "Iron Man");
-            // Superman
-            System.out.println("Superman");
-            heroes.put(faceDetection("\"url\":\"http://www.coupdemainmagazine.com/sites/default/files/3/Henry%20Cavill.jpg\"").getFaceId(), "Superman");
-            // Mystique
-            System.out.println("Mystique");
-            heroes.put(faceDetection("\"url\":\"http://cdn.wegotthiscovered.com/wp-content/uploads/683013-540x360.jpg\"").getFaceId(), "Mystique");
-            // Xavier
-            System.out.println("Bing Bing Fan");
-            heroes.put(faceDetection("\"url\":\"http://screenrant.com/wp-content/uploads/Blink-in-X-Men-Days-of-Future-Past1.jpg\"").getFaceId(), "Bing Bing Fan");
+            if (result.getAttributes().getGender().equalsIgnoreCase("Female")) {
+                heroes = initForW(heroes);
+            }
+            heroes = initForM(heroes);
 
             String[] toCompareWith = new String[heroes.size()];
             int count = 0;
@@ -62,6 +42,38 @@ public class FacialAnalysis
             Thread.sleep(50000);
             main(null);
         }
+    }
+
+    public static Map<String, String> initForW(Map<String, String> heroes) {
+        // Wonder Woman
+        System.out.println("Wonder Woman");
+        heroes.put(faceDetection("\"url\":\"http://oyster.ignimgs.com/wordpress/stg.ign.com/2010/01/lynda-carter-wonder-woman.jpg\"").getFaceId(), "Wonder Woman");
+        // Storm
+        System.out.println("Storm");
+        heroes.put(faceDetection("\"url\":\"http://cdn.movieweb.com/img.news/NE3IBkFlPbuF6b_1_2.jpg\"").getFaceId(), "Storm");
+        // Jean Grey/Phoenix
+        System.out.println("Jean Grey/Phoenix");
+        heroes.put(faceDetection("\"url\":\"http://vignette1.wikia.nocookie.net/xmenmovies/images/7/70/Phoenix_13.jpg/revision/latest?cb=20110626022356\"").getFaceId(), "Jean Grey/Phoenix");
+        // Mystique
+        System.out.println("Mystique");
+        heroes.put(faceDetection("\"url\":\"http://cdn.wegotthiscovered.com/wp-content/uploads/683013-540x360.jpg\"").getFaceId(), "Mystique");
+        return heroes;
+    }
+
+    public static Map<String, String> initForM(Map<String, String> heroes) {
+        // Joker
+        System.out.println("Joker");
+        heroes.put(faceDetection("\"url\":\"http://blogs-images.forbes.com/markhughes/files/2015/04/Heath-Ledger-Joker-The-Dark-Knight.png\"").getFaceId(), "Joker");
+        // Iron Man
+        System.out.println("Iron Man");
+        heroes.put(faceDetection("\"url\":\"http://cdn.idigitaltimes.com/sites/idigitaltimes.com/files/2014/09/08/iron-man-4.jpg\"").getFaceId(), "Iron Man");
+        // Superman
+        System.out.println("Superman");
+        heroes.put(faceDetection("\"url\":\"http://www.coupdemainmagazine.com/sites/default/files/3/Henry%20Cavill.jpg\"").getFaceId(), "Superman");
+        // Xavier
+        System.out.println("Bing Bing Fan");
+        heroes.put(faceDetection("\"url\":\"http://screenrant.com/wp-content/uploads/Blink-in-X-Men-Days-of-Future-Past1.jpg\"").getFaceId(), "Bing Bing Fan");
+        return heroes;
     }
 
     public static JSON faceDetection(String url) {
