@@ -1,14 +1,17 @@
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
-import java.net.URI;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-public class JavaSample
+import java.net.URI;
+
+public class Sample
 {
     public static void main(String[] args)
     {
@@ -17,7 +20,6 @@ public class JavaSample
         try
         {
             URIBuilder builder = new URIBuilder("https://api.projectoxford.ai/face/v0/detections");
-
             builder.setParameter("analyzesFaceLandmarks", "false");
             builder.setParameter("analyzesAge", "false");
             builder.setParameter("analyzesGender", "false");
