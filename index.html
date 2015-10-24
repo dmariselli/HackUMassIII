@@ -2,18 +2,17 @@
 <html>
 <head>
 <title> Halloween Spectacular: Which Superhero Are YOu?</title>
-<link rel="stylesheet" type="text/css" href="mystyle.css">	
 </head>
 <!--Code to get an upload file-->
 <center>
 <body onload="myFunction()">
-<background class="background.jpg"></background>");
 
 <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
 
 <p id="demo"></p>
     
 <script>
+document.body.style.backgroundImage = "url('background.jpg')";
 function myFunction(){
     var x = document.getElementById("myFile");
     var txt = "";
