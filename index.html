@@ -2,17 +2,25 @@
 <html>
 <head>
 <title> Halloween Spectacular: Which Superhero Are YOu?</title>
+<link rel="stylesheet" type="text/css" href="mystyle.css">	
 </head>
-<!--Code to get an upload file-->
-<center>
-<body onload="myFunction()">
+ <div class="container">
+ <div class="center_div">
+	<h1>Find Your Inner Superhero </h1>
+
+<p> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!<br> 
+</p>
+<!--Code to an upload file-->
+
+<p onload="myFunction()">
+
 
 <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
 
 <p id="demo"></p>
     
 <script>
-document.body.style.backgroundImage = "url('background.jpg')";
+//document.body.style.backgroundImage = "url('background.jpg')";
 function myFunction(){
     var x = document.getElementById("myFile");
     var txt = "";
@@ -44,6 +52,8 @@ function myFunction(){
 }
 </script>
 
+</div>
+<body></body> 
 </body>
-</center>
+
 </html>
