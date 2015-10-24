@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css">	
 </head>
 <!--Code to get an upload file-->
+<center>
 <body onload="myFunction()">
 
 <input type="file" id="myFile" multiple size="50" onchange="myFunction()">
@@ -34,7 +35,7 @@ function myFunction(){
     } 
     else {
         if (x.value == "") {
-            txt += "Select one or more files.";
+            txt += "Select your music file.";
         } else {
             txt += "The files property is not supported by your browser!";
             txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
@@ -50,4 +51,5 @@ function myFunction(){
 
 
 </body>
+</center>
 </html>
