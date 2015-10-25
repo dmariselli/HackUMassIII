@@ -17,15 +17,13 @@
         </form>
 
         <p th:text="'You are ' + ${hero} + '!'" />
-        <p th:text="'Original Pic ' + ${originalURL} + '!'" />
-        <p th:text="'Hero Pic ' + ${heroURL} + '!'" />
-        <img class="image1" src="image1.jpg" alt="image">
-        <img class="image2" src="image2.jpg" alt="image">
-        <!--<img src="sdf.jpg" alt="Original" width="15" height="15"/>-->
-        <!--<img src="${heroURL}" alt="New" width="15" height="15"/>-->
+        <img id="image1" src="image1.jpg" alt="image"/>
+        <img id="image2" src="image2.jpg" alt="image"/>
         <script th:inline="javascript">
-            var image=document.getElementByClassName(".image1");
+            var image=document.getElementById("image1");
             image.src=/*[[${originalURL}]]*/
+            var image=document.getElementById("image2");
+            image.src=/*[[${heroURL}]]*/
         </script>
         </center>
     </body>
