@@ -7,16 +7,17 @@
 </head>
 
     <body>
-        <center>
+    <center>
+    <div class="header">
         <h1>Find Your Inner Superhero </h1>
         <p> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!</p>
-
+    </div>
         <form action="" method="get">
         Photo URL: <br> <input type="text" name="url"/> </br>
         <input type="submit" value="Submit"/>
         </form>
 
-        <p th:text="'You are ' + ${hero} + '!'" />
+        <p th:text="${hero}"/>
         <img id="image1" src="image1.jpg" alt="image"/>
         <img id="image2" src="image2.jpg" alt="image"/>
         <script th:inline="javascript">

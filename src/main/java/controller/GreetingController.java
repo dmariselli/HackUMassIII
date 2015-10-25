@@ -28,8 +28,12 @@ public class GreetingController {
                 System.err.println("MICROSOFT FAILED");
             }
             model.addAttribute("originalURL", results[0]);
-            model.addAttribute("hero", results[1]);
+            model.addAttribute("hero", "You are " + results[1] + "!");
             model.addAttribute("heroURL", results[2]);
+        } else {
+            model.addAttribute("originalURL", "http://www.cowboysfans.com/wp-content/uploads/2015/04/Silhouette-question-mark-300x300.jpeg");
+            model.addAttribute("hero", "");
+            model.addAttribute("heroURL", "http://pictogram-free.com/material/098.png");
         }
         return "analysis";
     }
