@@ -4,25 +4,30 @@
     <title> Halloween Spectacular: Which Superhero Are You?</title>
     <link rel="stylesheet" type="text/css" media="all"
           href="/css/style.css" th:href="@{/css/style.css}" />
-
 </head>
-<body>
-	<center>
-<h1>Find Your Inner Superhero </h1>
-<p> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!</p>
 
-<form action="" method="get">
-Photo URL: <br> <input type="text" name="url"/> </br>
-<input type="submit" value="Submit"/>
-</form>
+    <body>
+        <center>
+        <h1>Find Your Inner Superhero </h1>
+        <p> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!</p>
 
-<p th:text="'You are ' + ${hero} + '!'" />
-<!--<p th:text="'Original Pic ' + ${originalURL} + '!'" />-->
-<!--<p th:text="'Hero Pic ' + ${heroURL} + '!'" />-->
-<img src="${originalURL}" alt="Original" width="15" height="15"/>
-<img src="${heroURL}" alt="New" width="15" height="15"/>
-<img href="${original}"></img>
-<img href="${new}"></img>
-<center>
-</body>
+        <form action="" method="get">
+        Photo URL: <br> <input type="text" name="url"/> </br>
+        <input type="submit" value="Submit"/>
+        </form>
+
+        <p th:text="'You are ' + ${hero} + '!'" />
+        <p th:text="'Original Pic ' + ${originalURL} + '!'" />
+        <p th:text="'Hero Pic ' + ${heroURL} + '!'" />
+        <img class="image1" src="image1.jpg" alt="image">
+        <img class="image2" src="image2.jpg" alt="image">
+        <!--<img src="sdf.jpg" alt="Original" width="15" height="15"/>-->
+        <!--<img src="${heroURL}" alt="New" width="15" height="15"/>-->
+        <script th:inline="javascript">
+            var image=document.getElementByClassName(".image1");
+            image.src=/*[[${originalURL}]]*/
+        </script>
+        </center>
+    </body>
+
 </html>
