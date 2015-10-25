@@ -1,4 +1,4 @@
-package Analysis;
+package analysis;
 
 public class Attributes {
 

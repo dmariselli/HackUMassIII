@@ -1,6 +1,6 @@
-package hello;
+package controller;
 
-import Analysis.FacialAnalysis;
+import analysis.FacialAnalysis;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,13 @@ public class GreetingController {
 
     @RequestMapping("/analysis")
     public String analysis(@RequestParam(value="url", required=true) String url, Model model) {
-        String result = facialAnalysis.analysis(url);
+        String result = null;
+        try {
+            result = facialAnalysis.analysis(url);
+        } catch (Exception e) {
+            System.err.println("MICROSOFT FAILED");
+        }
+
         model.addAttribute("url", result);
         return "analysis";
     }
