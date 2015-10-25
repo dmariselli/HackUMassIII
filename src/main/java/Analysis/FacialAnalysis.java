@@ -40,7 +40,7 @@ public class FacialAnalysis
         return heroes.get(findSimilar(result, toCompareWith));
     }
 
-    public static Map<String, String> initForW(Map<String, String> heroes) {
+    public Map<String, String> initForW(Map<String, String> heroes) {
         // Wonder Woman
         System.out.println("Wonder Woman");
         heroes.put(faceDetection("\"url\":\"http://oyster.ignimgs.com/wordpress/stg.ign.com/2010/01/lynda-carter-wonder-woman.jpg\"").getFaceId(), "Wonder Woman");
@@ -59,7 +59,7 @@ public class FacialAnalysis
         return heroes;
     }
 
-    public static Map<String, String> initForM(Map<String, String> heroes) {
+    public Map<String, String> initForM(Map<String, String> heroes) {
         // Joker
         System.out.println("Joker");
         heroes.put(faceDetection("\"url\":\"http://blogs-images.forbes.com/markhughes/files/2015/04/Heath-Ledger-Joker-The-Dark-Knight.png\"").getFaceId(), "Joker");
@@ -72,7 +72,7 @@ public class FacialAnalysis
         return heroes;
     }
 
-    public static JSON faceDetection(String url) {
+    public JSON faceDetection(String url) {
         try {
             JSON result = new JSON();
             URIBuilder builder = new URIBuilder("https://api.projectoxford.ai/face/v0/detections");
@@ -108,7 +108,7 @@ public class FacialAnalysis
         return null;
     }
 
-    public static String findSimilar(JSON user, String[] toCompareWith) {
+    public String findSimilar(JSON user, String[] toCompareWith) {
         double current = 0.0;
         double max = 0.0;
         String similar = null;
@@ -128,7 +128,7 @@ public class FacialAnalysis
         return def;
     }
 
-    public static double compare(JSON user, String comparison) {
+    public double compare(JSON user, String comparison) {
         try {
             URIBuilder builder = new URIBuilder("https://api.projectoxford.ai/face/v0/verifications");
 
