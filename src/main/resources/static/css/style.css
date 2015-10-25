@@ -1,8 +1,14 @@
 body {
     background-image: url("/images/background.jpg");
+    text-align:center;
+    width:100%;
 }
-div .header {
-    background-color: black;
+
+div#header {
+    background-color:black;
+    color:white;
+    margin:20px;
+    padding-bottom: 10px;
 }
 
 h1{
