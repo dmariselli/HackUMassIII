@@ -23,13 +23,17 @@ public class FacialAnalysis
         try {
             Map<String, String> heroes = new HashMap<String, String>();
             String input =  "\"url\":\"http://orig15.deviantart.net/5470/f/2010/105/4/5/random_person_by_vurtov.jpg\"";
+            if (args.length > 0) {
+                input = args[0];
+            }
             JSON result = faceDetection(input);
             if (result.getAttributes().getGender().equalsIgnoreCase("Female")) {
                 heroes = initForW(heroes);
+            } else {
+                heroes = initForM(heroes);
             }
-            heroes = initForM(heroes);
 
-            String[] toCompareWith = new String[heroes.size()];
+            String[] toCompareWith = new String[heroes.size()+1];
             int count = 0;
             for (String ids : heroes.keySet()) {
                 toCompareWith[count++] = ids;
@@ -57,6 +61,9 @@ public class FacialAnalysis
         // Mystique
         System.out.println("Mystique");
         heroes.put(faceDetection("\"url\":\"http://cdn.wegotthiscovered.com/wp-content/uploads/683013-540x360.jpg\"").getFaceId(), "Mystique");
+        // Bing Bing Fan
+        System.out.println("Bing Bing Fan");
+        heroes.put(faceDetection("\"url\":\"http://screenrant.com/wp-content/uploads/Blink-in-X-Men-Days-of-Future-Past1.jpg\"").getFaceId(), "Bing Bing Fan");
         return heroes;
     }
 
@@ -70,9 +77,6 @@ public class FacialAnalysis
         // Superman
         System.out.println("Superman");
         heroes.put(faceDetection("\"url\":\"http://www.coupdemainmagazine.com/sites/default/files/3/Henry%20Cavill.jpg\"").getFaceId(), "Superman");
-        // Xavier
-        System.out.println("Bing Bing Fan");
-        heroes.put(faceDetection("\"url\":\"http://screenrant.com/wp-content/uploads/Blink-in-X-Men-Days-of-Future-Past1.jpg\"").getFaceId(), "Bing Bing Fan");
         return heroes;
     }
 
