@@ -1,4 +1,4 @@
-// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
+package analysis;// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -19,33 +19,25 @@ public class FacialAnalysis
     final static String AUTH_KEY = "xxx";
     final static HttpClient httpclient = HttpClients.createDefault();
 
-    public static void main(String[] args) throws InterruptedException {
-        try {
-            Map<String, String> heroes = new HashMap<String, String>();
-            String input =  "\"url\":\"http://orig15.deviantart.net/5470/f/2010/105/4/5/random_person_by_vurtov.jpg\"";
-            if (args.length > 0) {
-                input = args[0];
-            }
-            JSON result = faceDetection(input);
-            if (result.getAttributes().getGender().equalsIgnoreCase("Female")) {
-                heroes = initForW(heroes);
-            } else {
-                heroes = initForM(heroes);
-            }
+    public String analysis(String url) {
+        Map<String, String> heroes = new HashMap<>();
+        String input =  "\"url\":\"http://orig15.deviantart.net/5470/f/2010/105/4/5/random_person_by_vurtov.jpg\"";
+        if (url != null) {
+            input = "\"url\":\"" + url + "\"";
+        }
+        JSON result = faceDetection(input);
+        if (result.getAttributes().getGender().equalsIgnoreCase("Female")) {
+            heroes = initForW(heroes);
+        } else {
+            heroes = initForM(heroes);
+        }
 
-            String[] toCompareWith = new String[heroes.size()+1];
-            int count = 0;
-            for (String ids : heroes.keySet()) {
-                toCompareWith[count++] = ids;
-            }
-            String similarHero = heroes.get(findSimilar(result, toCompareWith));
-            System.out.println(similarHero);
+        String[] toCompareWith = new String[heroes.size()+1];
+        int count = 0;
+        for (String ids : heroes.keySet()) {
+            toCompareWith[count++] = ids;
         }
-        catch (Exception e) {
-            System.out.println("Time leak");
-            Thread.sleep(50000);
-            main(null);
-        }
+        return heroes.get(findSimilar(result, toCompareWith));
     }
 
     public static Map<String, String> initForW(Map<String, String> heroes) {

@@ -1,3 +1,5 @@
+package analysis;
+
 public class FaceRectangle {
 
     private int top;
