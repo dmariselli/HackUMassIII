@@ -9,18 +9,16 @@
 <body>
 <h1>Find Your Inner Superhero </h1>
 <p> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!</p>
-<script th:inline="javascript">
-<!--document.body.style.backgroundImage = "url(\'background.jpg')";-->
-<!--document.body.style.opacity=1;-->
-</script>
 
 <form action="" method="get">
 Photo URL: <br> <input type="text" name="url"/> </br>
 <input type="submit" value="Submit"/>
-
 </form>
+
 <p th:text="'You are ' + ${hero} + '!'" />
-<img href="${original}"></img>
-<img href="${new}"></img>
+<!--<p th:text="'Original Pic ' + ${originalURL} + '!'" />-->
+<!--<p th:text="'Hero Pic ' + ${heroURL} + '!'" />-->
+<img src="${originalURL}" alt="Original" width="15" height="15"/>
+<img src="${heroURL}" alt="New" width="15" height="15"/>
 </body>
 </html>

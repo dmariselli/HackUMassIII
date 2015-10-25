@@ -27,9 +27,9 @@ public class GreetingController {
                 e.printStackTrace();
                 System.err.println("MICROSOFT FAILED");
             }
-            model.addAttribute("original", results[0]);
-            model.addAttribute("new", results[1]);
-            model.addAttribute("hero", results[2]);
+            model.addAttribute("originalURL", results[0]);
+            model.addAttribute("hero", results[1]);
+            model.addAttribute("heroURL", results[2]);
         }
         return "analysis";
     }
