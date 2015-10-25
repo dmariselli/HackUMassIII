@@ -23,6 +23,7 @@ public class GreetingController {
         try {
             result = facialAnalysis.analysis(url);
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println("MICROSOFT FAILED");
         }
 

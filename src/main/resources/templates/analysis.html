@@ -4,19 +4,18 @@
     <title> Halloween Spectacular: Which Superhero Are YOu?</title>
 </head>
 <body>
-    <center>
-<h1 th:style="color:#FFFFFF">Find Your Inner Superhero </h1>
-<p th:style="color:#FFFFFF"> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!</p>
-<script thinline="javascript">
+<h1>Find Your Inner Superhero </h1>
+<p> Through this app, you will be able to find your inner superhero, just in time for Halloween!  Submit your photo below to find your match!</p>
+<script th:inline="javascript">
 document.body.style.backgroundImage = "url('background.jpg')";
 document.body.style.opacity=1;
 </script>
 
-<form action="" method="get" style="color:#FFFFFF">
-Photo URL: <br> <input type="text" name="url"> <br>
-<input type="submit" value="Submit">
+<form action="" method="get">
+Photo URL: <br> <input type="text" name="url"></input> </br>
+<input type="submit" value="Submit"></input>
 
 </form>
-</center>
+<p th:text="'Hello, ' + ${name} + '!'" />
 </body>
 </html>
