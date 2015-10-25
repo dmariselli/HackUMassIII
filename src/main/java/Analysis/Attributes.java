@@ -1,3 +1,5 @@
+package Analysis;
+
 public class Attributes {
 
     private String gender;

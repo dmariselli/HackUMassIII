@@ -1,3 +1,5 @@
+package Analysis;
+
 public class JSON {
 
     private String faceId;
