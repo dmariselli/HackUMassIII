@@ -19,7 +19,7 @@ public class FacialAnalysis
     final static String AUTH_KEY = "xxx";
     final static HttpClient httpclient = HttpClients.createDefault();
 
-    public String analysis(String url) {
+    public String[] analysis(String url) {
         Map<String, String> heroes = new HashMap<>();
         String input =  "\"url\":\"http://orig15.deviantart.net/5470/f/2010/105/4/5/random_person_by_vurtov.jpg\"";
         if (url != null) {
@@ -37,7 +37,11 @@ public class FacialAnalysis
         for (String ids : heroes.keySet()) {
             toCompareWith[count++] = ids;
         }
-        return heroes.get(findSimilar(result, toCompareWith));
+        String[] results = new String[3];
+        results[0] = input;
+        results[1] = findSimilar(result, toCompareWith);
+        results[2] = heroes.get(results[1]);
+        return results;
     }
 
     public static Map<String, String> initForW(Map<String, String> heroes) {

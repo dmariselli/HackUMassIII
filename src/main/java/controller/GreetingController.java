@@ -18,16 +18,17 @@ public class GreetingController {
     }
 
     @RequestMapping("/analysis")
-    public String analysis(@RequestParam(value="url", required=true) String url, Model model) {
-        String result = null;
-        try {
-            result = facialAnalysis.analysis(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("MICROSOFT FAILED");
+    public String analysis(@RequestParam(value="url", required=false) String url, Model model) {
+        String[] results = new String[3];
+        if (url != null) {
+            try {
+                results = facialAnalysis.analysis(url);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.err.println("MICROSOFT FAILED");
+            }
+            model.addAttribute("url", results[2]);
         }
-
-        model.addAttribute("url", result);
         return "analysis";
     }
 
