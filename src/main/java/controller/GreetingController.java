@@ -19,15 +19,15 @@ public class GreetingController {
 
     @RequestMapping("/analysis")
     public String analysis(@RequestParam(value="url", required=false) String url, Model model) {
-        String result = null;
+        String[] results = new String[3];
         if (url != null) {
             try {
-                result = facialAnalysis.analysis(url);
+                results = facialAnalysis.analysis(url);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("MICROSOFT FAILED");
             }
-            model.addAttribute("url", result);
+            model.addAttribute("url", results[2]);
         }
         return "analysis";
     }
